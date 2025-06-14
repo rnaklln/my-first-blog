@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+
+{% block content %}
 {% for post in posts %}
         <div class="post">
           <div class="date">
@@ -10,3 +12,4 @@
           <p>{{ post.text|linebreaksbr }}</p>
         </div>
 {% endfor %}
+{% endblock %}
