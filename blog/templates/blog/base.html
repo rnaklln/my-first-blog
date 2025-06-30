@@ -1,8 +1,7 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% autoescape off %}
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>ranira's blog</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -10,32 +9,20 @@
   <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">ranira's blog</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="{% url 'django.contrib.flatpages.views.flatpage' url='/about/' %}">About</a></li>
-        <!--<li><a href="{% url 'django.contrib.flatpages.views.flatpage' url='/contact/' %}">Contact</a></li>-->
-        <!-- Add more flatpages here -->
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span> New Post</a></li>
-          <li><a href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-          <li><a href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container">
-    {% block content %}
-    {% endblock %}
+  <div class="page-header">
+    {% if user.is_authenticated %}
+    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
+    <h1><a href="/">ranira's blog</a></h1>
   </div>
-  
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-8">
+{% block content %}
+{% endblock %}
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+{% endautoescape %}
