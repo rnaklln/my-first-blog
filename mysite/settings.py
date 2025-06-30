@@ -175,7 +175,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-INSTALLED_APPS += ['django.contrib.sites']INSTALLED_APPS += ['django.contrib.sites']
 
 
 
