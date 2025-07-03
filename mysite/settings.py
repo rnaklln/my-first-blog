@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'blog',
+    'django_extensions',
     'ckeditor',
     'ckeditor_uploader'
 ]
